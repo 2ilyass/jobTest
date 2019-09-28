@@ -22,8 +22,34 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+<profiles>
 
-   <build>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <!-- this profile is active by default -->
+                <activeByDefault>true</activeByDefault>
+                <!-- activate if system properties 'env=dev' -->
+                <property>
+                    <name>environnement</name>
+                    <value>dev</value>
+                </property>
+            </activation>
+            
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <activation>
+                <!-- activate if system properties 'env=prod' -->
+                <property>
+                    <name>environnement</name>
+                    <value>prod</value>
+                </property>
+            </activation>
+           
+        </profile>
+        <build>
         <plugins>
             <plugin>
                 <groupId>org.flywaydb</groupId>
@@ -43,4 +69,7 @@
             </plugin>
         </plugins>
     </build>
+
+    </profiles>
+   
 </project>
